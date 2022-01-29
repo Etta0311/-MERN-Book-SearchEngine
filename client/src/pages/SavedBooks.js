@@ -1,4 +1,5 @@
 import React from "react";
+import Auth from "../utils/auth";
 import {
   Jumbotron,
   Container,
@@ -10,7 +11,6 @@ import { removeBookId } from "../utils/localStorage";
 import { useMutation, useQuery } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_BOOK } from "../utils/mutations";
-import Auth from "../utils/auth";
 
 const SavedBooks = () => {
   const { loading, data } = useQuery(GET_ME);
@@ -49,7 +49,7 @@ const SavedBooks = () => {
             ? `Viewing ${userData.savedBooks.length} saved ${
                 userData.savedBooks.length === 1 ? "book" : "books"
               }:`
-            : "You have no saved books!"}
+            : "You didn't save any books"}
         </h2>
         <CardColumns>
           {userData.savedBooks.map((book) => {
